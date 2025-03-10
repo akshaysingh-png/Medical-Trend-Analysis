@@ -1,0 +1,51 @@
+import os
+import pandas as pd
+
+# Load dataset
+file_path = "/Users/pastorbobby/Medical_Trend_Analysis/Cleaned_Faulty_Medical_Devices.csv"
+df = pd.read_csv(file_path)
+
+# Create a directory for reports
+report_dir = "/Users/pastorbobby/Medical_Trend_Analysis/reports"
+os.makedirs(report_dir, exist_ok=True)
+
+# Open a log file to save findings
+log_file_path = f"{report_dir}/EDA_Report.txt"
+with open(log_file_path, "w") as log:
+
+    log.write("📌 **Exploratory Data Analysis Report**\n\n")
+
+    # Dataset overview
+    log.write(f"🔹 **Dataset Shape:** {df.shape[0]} rows, {df.shape[1]} columns\n\n")
+
+    log.write("🔹 **Column Names & Data Types:**\n")
+    log.write(f"{df.dtypes}\n\n")
+
+    # Missing values check
+    missing_values = df.isnull().sum()
+    log.write("🔹 **Missing Values:**\n")
+    log.write(f"{missing_values[missing_values > 0]}\n\n")
+
+    # Check for duplicate rows
+    duplicate_count = df.duplicated().sum()
+    log.write(f"🔹 **Duplicate Rows:** {duplicate_count}\n\n")
+
+    # Summary statistics
+    log.write("🔹 **Numerical Column Summary:**\n")
+    log.write(f"{df.describe()}\n\n")
+
+    # Summary for categorical columns
+    categorical_cols = df.select_dtypes(include=['object']).columns
+    log.write("🔹 **Categorical Column Summary (Top 5 Values):**\n")
+    for col in categorical_cols:
+        log.write(f"{col}:\n{df[col].value_counts().head(5)}\n\n")
+
+    # Correlation matrix (only for numerical columns)
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    if len(numeric_cols) > 1:
+        log.write("🔹 **Correlation Matrix:**\n")
+        log.write(f"{df[numeric_cols].corr()}\n\n")
+
+    log.write("✅ **EDA Completed!** Check this report for key insights.\n")
+
+print(f"EDA Report saved at: {log_file_path}")

@@ -1,0 +1,92 @@
+📌 **Exploratory Data Analysis Report**
+
+🔹 **Dataset Shape:** 118249 rows, 8 columns
+
+🔹 **Column Names & Data Types:**
+id                  int64
+description        object
+name               object
+slug               object
+country            object
+manufacturer_id     int64
+created_at         object
+updated_at         object
+dtype: object
+
+🔹 **Missing Values:**
+Series([], dtype: int64)
+
+🔹 **Duplicate Rows:** 0
+
+🔹 **Numerical Column Summary:**
+                  id  manufacturer_id
+count  118249.000000    118249.000000
+mean    59125.000000     15022.948321
+std     34135.690328      9117.177777
+min         1.000000         1.000000
+25%     29563.000000      6097.000000
+50%     59125.000000     14880.000000
+75%     88687.000000     24087.000000
+max    118249.000000     31827.000000
+
+🔹 **Categorical Column Summary (Top 5 Values):**
+description:
+description
+No Description             28643
+medical_device              2318
+md                          2108
+in-vitro_medical_device     1317
+In-vitro diagnostics        1020
+Name: count, dtype: int64
+
+name:
+name
+Device Recall  Customed                                        332
+Device Recall  P.F.C.                                          197
+Transpac IV Monitoring Kit                                     165
+Medtronic                                                      148
+Device Recall  MAXIMIS Pedicle Screw Spinal Fixation System    141
+Name: count, dtype: int64
+
+slug:
+slug
+tur-cell-dyn-emerald-cleanser                                                                      1
+pol-artiste-oncor-and-primus-with-syngo-rt-therapist-software-version-4-2                          1
+pol-artis-zeego-systems-with-c-arm-with-serial-numbers-from-1000-to-1599                           1
+pol-artis-zee-artis-q-and-artis-q-zen-systems-with-software-version-vd11b                          1
+pol-artis-zee-and-artis-zego-systems-used-together-with-a100-generators-and-3-focal-x-ray-tubes    1
+Name: count, dtype: int64
+
+country:
+country
+Usa    33665
+Can    13259
+Deu    10522
+Che     8093
+Irl     4495
+Name: count, dtype: int64
+
+created_at:
+created_at
+2022-08-04 08:28:03+00:00    62
+2022-08-04 08:28:05+00:00    62
+2022-08-04 08:28:04+00:00    61
+2022-08-04 08:28:06+00:00    61
+2022-08-04 08:28:14+00:00    60
+Name: count, dtype: int64
+
+updated_at:
+updated_at
+2022-08-04 08:28:06+00:00    61
+2022-08-04 08:28:03+00:00    61
+2022-08-04 08:28:04+00:00    61
+2022-08-04 08:28:05+00:00    61
+2022-08-04 08:28:12+00:00    60
+Name: count, dtype: int64
+
+🔹 **Correlation Matrix:**
+                       id  manufacturer_id
+id               1.000000         0.827766
+manufacturer_id  0.827766         1.000000
+
+✅ **EDA Completed!** Check this report for key insights.
